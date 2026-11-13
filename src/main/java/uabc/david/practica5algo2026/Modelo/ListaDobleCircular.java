@@ -86,4 +86,19 @@ public class ListaDobleCircular<T> {
 
         return dato;
     }
+
+    public int contarNodos() {
+        if (inicio == null) return 0;
+        int contador = 0;
+        NodoDoble<T> r = inicio;
+        do {
+            contador++;
+            r = r.getSig();
+        } while (r != inicio);
+        return contador;
+    }
+
+    public NodoDoble<T> getInicio() {
+        return inicio;
+    }
 }
