@@ -1,1 +1,18 @@
-test
+.titulo {
+    -fx-font-size: 30px;
+    -fx-font-weight: bold;
+}
+
+.nombre-carta {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+}
+
+.posicion {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+}
+
+.descripcion {
+    -fx-fill: white;
+}
