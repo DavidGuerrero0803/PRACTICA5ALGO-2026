@@ -17,6 +17,14 @@
     -fx-fill: white;
 }
 
+.panel-info {
+    -fx-background-color: #0a0e19cc;
+    -fx-background-radius: 10;
+    -fx-border-color: #d9a93a55;
+    -fx-border-radius: 10;
+    -fx-padding: 12 18 12 18;
+}
+
 .boton-consulta {
     -fx-background-color: #1e2742;
     -fx-background-radius: 8;
@@ -25,4 +33,12 @@
     -fx-border-width: 1.5;
     -fx-text-fill: #f1e6c8;
     -fx-font-weight: bold;
+}
+
+.panel-info .scroll-pane,
+.panel-info .scroll-pane > .viewport,
+.panel-info .scroll-pane > .corner {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
 }

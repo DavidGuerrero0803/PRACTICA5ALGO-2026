@@ -1,5 +1,8 @@
 package uabc.david.practica5algo2026;
 
+import uabc.david.practica5algo2026.Controlador.ControladorCatalogo;
+import uabc.david.practica5algo2026.Vista.PanelControl;
+import uabc.david.practica5algo2026.Vista.ReproductorMusica;
 import uabc.david.practica5algo2026.Modelo.CatalogoCartas;
 import uabc.david.practica5algo2026.Vista.CarruselGUI;
 
@@ -18,7 +21,9 @@ import java.io.InputStream;
  */
 public class YuGiOhGUI extends Application {
     private BorderPane raiz;
+    private PanelControl panel;
     private CarruselGUI carrusel;
+    private ReproductorMusica musica;
 
     @Override
     public void start(Stage escenario) {
@@ -29,7 +34,7 @@ public class YuGiOhGUI extends Application {
             Alert alerta = new Alert(Alert.AlertType.ERROR, "No se pudo leer el archivo de cartas.");
             alerta.showAndWait();
         }
-
+        panel = new PanelControl();
         carrusel = new CarruselGUI();
 
         Image fondo = new Image(getClass().getResource("/imagenes/fondo.png").toExternalForm());
@@ -38,14 +43,23 @@ public class YuGiOhGUI extends Application {
                 BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
                 BackgroundPosition.CENTER,
                 new BackgroundSize(1.0, 1.0, true, true, false, true))));
+        raiz.setLeft(panel);
         raiz.setCenter(carrusel);
 
         Scene escena = new Scene(raiz, 1200, 740);
         escena.getStylesheets().add(getClass().getResource("/estilos/estilos.css").toExternalForm());
 
+        musica = new ReproductorMusica(getClass().getResource("/audio/YuGiOh_LoFi.wav"));
+        new ControladorCatalogo(modelo, panel, carrusel, musica);
+
         escenario.setTitle("Yu-Gi-Oh! - 25th Anniversary Tin");
         escenario.setScene(escena);
         escenario.show();
+    }
+
+    @Override
+    public void stop() {
+        musica.detenerMusica();
     }
 
     public static void main(String[] args) {
