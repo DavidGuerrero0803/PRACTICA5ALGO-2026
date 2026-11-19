@@ -16,3 +16,13 @@
 .descripcion {
     -fx-fill: white;
 }
+
+.boton-consulta {
+    -fx-background-color: #1e2742;
+    -fx-background-radius: 8;
+    -fx-border-color: #d9a93a88;
+    -fx-border-radius: 8;
+    -fx-border-width: 1.5;
+    -fx-text-fill: #f1e6c8;
+    -fx-font-weight: bold;
+}
