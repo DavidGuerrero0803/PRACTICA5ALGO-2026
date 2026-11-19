@@ -55,6 +55,8 @@ public class YuGiOhGUI extends Application {
         escenario.setTitle("Yu-Gi-Oh! - 25th Anniversary Tin");
         escenario.setScene(escena);
         escenario.show();
+
+        musica.reproducirMusica();
     }
 
     @Override
