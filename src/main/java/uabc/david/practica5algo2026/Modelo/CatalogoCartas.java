@@ -102,4 +102,73 @@ public class CatalogoCartas {
         } while (r != atributos.getInicio());
         return false;
     }
+
+    public ListaDobleCircular<CartaYuGiOh> porNivel(int nivel) {
+        ListaDobleCircular<CartaYuGiOh> resultado = new ListaDobleCircular<>();
+        if (todasLasCartas.estaVacia()) {
+            return resultado;
+        }
+        NodoDoble<CartaYuGiOh> r = todasLasCartas.getInicio();
+        do {
+            CartaYuGiOh carta = r.getInfo();
+            if (carta.tieneNivel() && carta.getNivel() == nivel) {
+                resultado.insertarFin(carta);
+            }
+            r = r.getSig();
+        } while (r != todasLasCartas.getInicio());
+        return resultado;
+    }
+
+    public ListaDobleCircular<CartaYuGiOh> porAtributo(String atributo) {
+        ListaDobleCircular<CartaYuGiOh> resultado = new ListaDobleCircular<>();
+        if (todasLasCartas.estaVacia()) {
+            return resultado;
+        }
+        NodoDoble<CartaYuGiOh> r = todasLasCartas.getInicio();
+        do {
+            CartaYuGiOh carta = r.getInfo();
+            if (carta.getAtributo().equals(atributo)) {
+                resultado.insertarFin(carta);
+            }
+            r = r.getSig();
+        } while (r != todasLasCartas.getInicio());
+        return resultado;
+    }
+
+    public ListaDobleCircular<CartaYuGiOh> porAtaque(boolean menorAMayor) {
+        return pasarADobleCircular(ataqueOrdenados, !menorAMayor);
+    }
+
+    public ListaDobleCircular<CartaYuGiOh> porDefensa(boolean menorAMayor) {
+        return pasarADobleCircular(defensaOrdenados, !menorAMayor);
+    }
+
+    private ListaDobleCircular<CartaYuGiOh> pasarADobleCircular(ListaCircular<CartaYuGiOh> origen, boolean invertir) {
+        ListaDobleCircular<CartaYuGiOh> destino = new ListaDobleCircular<>();
+        if (origen.estaVacia()) {
+            return destino;
+        }
+        Nodo<CartaYuGiOh> r = origen.getInicio();
+        do {
+            if (invertir) {
+                destino.insertarInicio(r.getInfo());
+            } else {
+                destino.insertarFin(r.getInfo());
+            }
+            r = r.getSig();
+        } while (r != origen.getInicio());
+        return destino;
+    }
+
+    public ListaDobleCircular<CartaYuGiOh> getTodas() {
+        return todasLasCartas;
+    }
+
+    public ListaCircular<Integer> getNiveles() {
+        return niveles;
+    }
+
+    public ListaCircular<String> getAtributos() {
+        return atributos;
+    }
 }
