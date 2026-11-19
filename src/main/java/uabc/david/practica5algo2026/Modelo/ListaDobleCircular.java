@@ -87,6 +87,10 @@ public class ListaDobleCircular<T> {
         return dato;
     }
 
+    public boolean estaVacia() {
+        return inicio == null;
+    }
+
     public int contarNodos() {
         if (inicio == null) return 0;
         int contador = 0;

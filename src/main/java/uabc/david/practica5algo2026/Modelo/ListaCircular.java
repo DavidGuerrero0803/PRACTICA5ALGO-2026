@@ -1,5 +1,7 @@
 package uabc.david.practica5algo2026.Modelo;
 
+import java.util.Comparator;
+
 /**
  * Esta clase representa una Lista Circular simple,
  * en donde el último nodo no apunta a null, sino que
@@ -76,5 +78,40 @@ public class ListaCircular<T> {
         }
 
         return dato;
+    }
+
+    public boolean estaVacia() {
+        return inicio == null;
+    }
+
+    public void ordenarLista(Comparator<T> comparador) {
+        if (inicio == null || inicio == fin) {
+            return;
+        }
+
+        Nodo<T> i = inicio;
+        do {
+            Nodo<T> menor = i;
+            Nodo<T> j = i.getSig();
+
+            while (j != inicio) {
+                if (comparador.compare(j.getInfo(), menor.getInfo()) < 0) {
+                    menor = j;
+                }
+                j = j.getSig();
+            }
+
+            if (menor != i) {
+                T temp = i.getInfo();
+                i.setInfo(menor.getInfo());
+                menor.setInfo(temp);
+            }
+
+            i = i.getSig();
+        } while (i != fin);
+    }
+
+    public Nodo<T> getInicio() {
+        return inicio;
     }
 }
