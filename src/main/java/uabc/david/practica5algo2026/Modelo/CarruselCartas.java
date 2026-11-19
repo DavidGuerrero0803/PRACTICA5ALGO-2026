@@ -30,6 +30,10 @@ public class CarruselCartas {
         }
     }
 
+    public boolean estaVacio() {
+        return cartasTotales == 0;
+    }
+
     public CartaYuGiOh getActual() {
         return cartaActual.getInfo();
     }

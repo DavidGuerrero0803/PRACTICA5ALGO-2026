@@ -17,6 +17,10 @@
     -fx-fill: white;
 }
 
+.label, .check-box {
+    -fx-text-fill: white;
+}
+
 .panel-info {
     -fx-background-color: #0a0e19cc;
     -fx-background-radius: 10;
@@ -33,6 +37,15 @@
     -fx-border-width: 1.5;
     -fx-text-fill: #f1e6c8;
     -fx-font-weight: bold;
+}
+
+.boton-consulta:hover {
+    -fx-background-color: #2a3660;
+    -fx-border-color: #ffd873;
+}
+
+.boton-consulta:pressed {
+    -fx-background-color: #151c33;
 }
 
 .panel-info .scroll-pane,

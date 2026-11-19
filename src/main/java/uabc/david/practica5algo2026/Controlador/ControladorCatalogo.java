@@ -1,9 +1,6 @@
 package uabc.david.practica5algo2026.Controlador;
 
-import uabc.david.practica5algo2026.Modelo.CarruselCartas;
-import uabc.david.practica5algo2026.Modelo.CatalogoCartas;
-import uabc.david.practica5algo2026.Modelo.ListaCircular;
-import uabc.david.practica5algo2026.Modelo.Nodo;
+import uabc.david.practica5algo2026.Modelo.*;
 import uabc.david.practica5algo2026.Vista.ReproductorMusica;
 import uabc.david.practica5algo2026.Vista.CarruselGUI;
 import uabc.david.practica5algo2026.Vista.PanelControl;
@@ -23,6 +20,7 @@ public class ControladorCatalogo {
         this.musica = musica;
 
         llenarCombos();
+        mostrarTodas();
     }
 
     private void llenarCombos() {
@@ -42,6 +40,22 @@ public class ControladorCatalogo {
                 panel.getComboAtributo().getItems().add(r.getInfo());
                 r = r.getSig();
             } while (r != atributos.getInicio());
+        }
+    }
+
+    private void mostrarTodas() {
+        cambiarLista(modelo.getTodas(), "All cards");
+    }
+
+    private void cambiarLista(ListaDobleCircular<CartaYuGiOh> lista, String titulo) {
+        carrusel = new CarruselCartas(lista);
+        vista.setTitulo(titulo);
+        actualizarVista();
+    }
+
+    private void actualizarVista() {
+        if (!carrusel.estaVacio()) {
+            vista.mostrarCarrusel(carrusel);
         }
     }
 }
